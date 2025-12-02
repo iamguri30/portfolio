@@ -61,7 +61,7 @@
     WEA.Owl = function () {
       var owlslider = $("div.owl-carousel");
       if(owlslider.length > 0) {  
-         loadScript(plugin_track + 'owl-carousel/js/owl.carousel.min.js', function() {
+         loadScript(plugin_track + 'owl-carousel/js/owl.carousel.js', function() {
            owlslider.each(function () {
             var $this = $(this),
                 $items = ($this.data('items')) ? $this.data('items') : 1,
