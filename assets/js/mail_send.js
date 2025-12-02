@@ -5,6 +5,7 @@ function send_mail() {
     var message = jQuery("#message").val();
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var flag = 0;
+
     if (name == "") {
         jQuery("#name").addClass('invalid');
         jQuery("#val_user_name").html("Your Name is Required");
@@ -35,6 +36,7 @@ function send_mail() {
         jQuery("#subject").removeClass('invalid');
         jQuery("#val_subject").html("");
     }
+
     if (message == "") {
         jQuery("#message").addClass('invalid');
         jQuery("#val_message").html("Please Describe your thoughts");
@@ -44,32 +46,24 @@ function send_mail() {
         jQuery("#val_message").html("");
     }
 
-    if (flag == 1) {
-        return false;
-    }
+    if (flag == 1) return false;
 
     var data = {
-        access_key: jQuery("input[name='access_key']").val(),
-        "name": name,
-        "email": email,
-        "subject": subject,
-        "message": message,
+        name: name,
+        email: email,
+        subject: subject,
+        message: message
     };
 
     jQuery.ajax({
         type: "POST",
-        url: "https://api.web3forms.com/submit",
+        url: "https://formsubmit.co/ajax/kaur.gurleen.6810@gmail.com",
         data: data,
         dataType: "json",
         success: function(response) {
-            if (response.success) {
-                jQuery('#suce_message').show();
-                jQuery('#err_message').hide();
-                jQuery("#contact-form")[0].reset();
-            } else {
-                jQuery('#err_message').show();
-                jQuery('#suce_message').hide();
-            }
+            jQuery('#suce_message').show();
+            jQuery('#err_message').hide();
+            jQuery("#contact-form")[0].reset();
         },
         error: function() {
             jQuery('#err_message').show();
